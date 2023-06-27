@@ -10,7 +10,7 @@ pipeline {
     stage('error') {
       steps {
         script {
-          step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'ExecuteCommandInsideContainer', command: '', index: 1, privilegedMode: false, service: 'flask-app', workDir: ''], useCustomDockerComposeFile: true])
+          step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
         }
 
       }
