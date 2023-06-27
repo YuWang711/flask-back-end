@@ -8,8 +8,7 @@ pipeline {
           step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
         }
 
-        sh '''docker logs -f
-> logs.txt'''
+        sh 'docker ps -q | xargs -L 1 docker logs > logs.txt'
       }
     }
 
