@@ -12,14 +12,5 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
-      steps {
-        script {
-          step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
-        }
-
-      }
-    }
-
   }
 }
