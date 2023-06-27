@@ -10,11 +10,11 @@ pipeline {
 
     stage('Deploy') {
       steps {
+        unstash 'back-end-app'
         script {
           step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
         }
 
-        unstash 'back-end-app'
       }
     }
 
