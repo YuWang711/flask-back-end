@@ -7,9 +7,13 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
-        sh 'docker-compose -f docker-compose.prod.yml up -d --build'
+        script {
+          step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'ExecuteCommandInsideContainer', command: 'docker-compose -f docker-compose.prod.yml up -d --build', index: 1, privilegedMode: false, service: 'flask-app', workDir: ''],
+          useCustomDockerComposeFile: true])
+        }
+
       }
     }
 
