@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  back-end:
+    build: 
+      context: ./services/back-end
+      dockerfile: Dockerfile.prod
+    command: gunicorn --bind 0.0.0.0:5000 manage:app
+    expose:
+      - 5000
+    env_file:
+      - ./.env.prod
+  nginx:
+    build: ./services/nginx
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - back-end
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /tmp/acme_challenge:/tmp/acme_challenge
+    networks:
+      - app
+    restart: always
+networks:
+  app:
+    driver: bridge
