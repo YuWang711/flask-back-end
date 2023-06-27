@@ -12,5 +12,5 @@ def create_app():
 app = create_app().app
 
 
-if __name__ == '__main__':
-    app.runServer()
+# if __name__ == '__main__':
+#     app.runServer()
