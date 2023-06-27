@@ -22,7 +22,6 @@ services:
       - /tmp/acme_challenge:/tmp/acme_challenge
     networks:
       - app
-    restart: always
 networks:
   app:
     driver: bridge
