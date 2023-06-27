@@ -4,13 +4,12 @@ pipeline {
     stage('Build') {
       steps {
         git(url: 'https://github.com/YuWang711/flask-back-end.git', branch: 'main', poll: true)
-        stash(name: 'back-end-app', includes: '*')
+        archiveArtifacts '*'
       }
     }
 
     stage('Deploy') {
       steps {
-        unstash 'back-end-app'
         script {
           step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
         }
