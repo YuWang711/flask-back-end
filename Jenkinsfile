@@ -9,7 +9,7 @@ pipeline {
         }
 
         script {
-          'docker ps -q | xargs -L 1 docker logs > logs.txt'
+          docker ps -q | xargs -L 1 docker logs
         }
 
       }
