@@ -18,7 +18,7 @@ pipeline {
 
     stage('docker compose') {
       steps {
-        sh 'docker compose -f /workspace/flask-back-end_main docker-compose.prod.yml up -d'
+        sh 'docker compose -f /workspace/flask-back-end_main docker-compose.prod.yml up '
       }
     }
 
