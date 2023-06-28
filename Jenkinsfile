@@ -10,7 +10,7 @@ pipeline {
     stage('version') {
       steps {
         sh 'docker --version'
-        sh 'docker info'
+        sh 'docker -l'
         sh 'docker compose version'
         sh 'curl --version'
         sh 'jq --version'
