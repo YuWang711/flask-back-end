@@ -8,7 +8,6 @@ pipeline {
           step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
         }
 
-        sh 'docker ps -a'
       }
     }
 
