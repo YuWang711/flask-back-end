@@ -8,14 +8,6 @@ pipeline {
       }
     }
 
-    stage('version') {
-      steps {
-        sh 'docker --version'
-        sh 'docker compose version'
-        sh 'curl --version'
-      }
-    }
-
     stage('docker compose') {
       steps {
         sh 'docker compose -f "~/docker-compose.prod.yml" up'
