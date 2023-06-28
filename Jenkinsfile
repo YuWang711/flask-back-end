@@ -8,7 +8,7 @@ pipeline {
           step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.prod.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
         }
 
-        sh '/bin/bash -c "docker ps -q | xargs -L 1 docker logs"'
+        sh 'docker ps -a'
       }
     }
 
