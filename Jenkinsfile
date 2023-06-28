@@ -10,7 +10,7 @@ pipeline {
 
     stage('docker compose') {
       steps {
-        sh 'docker compose -f "~/docker-compose.prod.yml" up'
+        sh 'docker compose -f "docker-compose.prod.yml" up'
       }
     }
 
