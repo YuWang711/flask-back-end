@@ -17,7 +17,7 @@ pipeline {
 
     stage('prune docker data') {
       steps {
-        sh 'docker prune -a  --volumes -f'
+        sh 'docker compose -f docker-compose.prod.yml up -d --build'
       }
     }
 
