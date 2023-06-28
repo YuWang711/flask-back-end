@@ -12,7 +12,12 @@ pipeline {
         sh 'docker --version'
         sh 'docker compose version'
         sh 'curl --version'
-        sh 'jq --version'
+      }
+    }
+
+    stage('prune docker data') {
+      steps {
+        sh 'docker system prune -a  --volumes -f'
       }
     }
 
