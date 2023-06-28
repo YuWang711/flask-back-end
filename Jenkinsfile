@@ -7,9 +7,13 @@ pipeline {
       }
     }
 
-    stage('error') {
+    stage('version') {
       steps {
         sh 'docker --version'
+        sh 'docker info'
+        sh 'docker compose version'
+        sh 'curl --version'
+        sh 'jq --version'
       }
     }
 
